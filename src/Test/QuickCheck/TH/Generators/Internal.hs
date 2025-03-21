@@ -40,7 +40,7 @@ $(buildArbAny 20)
 -- type constructor must be either a data type or a newtype. Any other
 -- value will result in an exception.
 withType :: Name
-         -> ([TyVarBndr] -> [Con] -> Q a)
+         -> ([TyVarBndr BndrVis] -> [Con] -> Q a)
          -- ^ Function that generates the actual code. Will be applied
          -- to the type variable binders and constructors extracted
          -- from the given 'Name'.

@@ -51,7 +51,7 @@ buildArbAny l
       Nothing -> return []
       Just (firstArbParameterName,restArbParameterNames,arbitraryTypeName,genTypeName,fmapName,apName,arbitraryValue) -> do
         -- all of the variables in the function to be created, input and output
-        let plainTVs = PlainTV <$> (arbParameterNames ++ [bName])
+        let plainTVs = flip PlainTV SpecifiedSpec <$> (arbParameterNames ++ [bName])
             -- Arbitrary type instance required for all vars in arbParameterNames
             typeClassRequirements = (AppT (ConT arbitraryTypeName) ) <$> (VarT <$> arbParameterNames)
             genB     = AppT (ConT genTypeName) (VarT bName)
